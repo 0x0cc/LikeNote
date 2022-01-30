@@ -1,0 +1,1 @@
+"D:\微信\小程序\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-8gsiazug86a92de4 --n quickstartFunctions --r --project "E:\LIKEnote" --report_first --report
