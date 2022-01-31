@@ -1,2 +1,11 @@
 <!--pages/login/login.wxml-->
-<button type="primary" bindtap="login">登录</button>
+<!-- 页标题 -->
+<view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">登录</view>
+<!-- 登录卡片 -->
+<view class="card" style="margin-top: 20%;">
+  <view class="card_text">
+    <view>*获取微信昵称、头像信息公开展示</view>
+    <view>*获取openid作为私密的登录凭证</view>
+  </view>
+  <button class="theme_button" bindtap="login">登录</button>
+</view>

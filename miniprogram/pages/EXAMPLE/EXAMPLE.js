@@ -1,8 +1,9 @@
 // pages/login/login.js
 
 const db = wx.cloud.database();
+
 Page({
-  
+
   /**
    * 页面的初始数据
    */
@@ -14,7 +15,7 @@ Page({
     // 用户登录唯一凭证
     openid: '',
     // 用户头像
-    avatar: '',
+    avator: '',
     // 用户昵称
     nickName: '',
   },
@@ -47,14 +48,14 @@ Page({
         console.log("获取用户信息成功");
         console.log(res);
         var nickName = res.userInfo.nickName;
-        var avatar = res.userInfo.avatarUrl;
+        var avator = res.userInfo.avatorUrl;
         this.setData({
           nickName: nickName,
-          avatar: avatar,
+          avator: avator,
         })
         
         var openid = that.data.openid;
-        var avatar = that.data.avatar;
+        var avator = that.data.avator;
         var nickName = that.data.nickName;
         console.log('openid: '+openid);
         // 检查是否已在数据库存在记录
@@ -67,7 +68,7 @@ Page({
             data: {
               openid: openid,
               nickName: nickName,
-              avatar: avatar,
+              avator: avator,
             }
           })
         }
@@ -78,7 +79,7 @@ Page({
           }).update({
             data: {
               nickName: nickName,
-              avatar: avatar
+              avator: avator
             }
           })
         }
@@ -91,29 +92,15 @@ Page({
           icon: 'error',
           duration: 800
         })
-        return;
       }
     })
-    setTimeout(function(){
-      // 存储登录信息
-      wx.setStorage({
-        key: 'openid',
-        data: that.data.openid
-      })
-    },1000)
-    setTimeout(function(){
-      // 跳转
-      wx.navigateBack({
-        delta: 0,
-      })
-    },1200)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(this.data)
   },
 
   /**

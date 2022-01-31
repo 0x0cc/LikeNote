@@ -1,0 +1,31 @@
+/* pages/person/person.wxss */
+@import '../wxss/main.wxss';
+/* 头像框 */
+.avatarBox {
+  display: block;
+  box-sizing: border-box;
+  width: 25%;
+  margin: 2.5% 7.5%;
+  padding: 0;
+  border: 3px #6177ff solid;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatar {
+  width: 100%;
+}
+
+/* 用户基本信息框 */
+.infoBox {
+  display: block;
+  box-sizing: border-box;
+  width: 40%;
+  margin: 2.5%;
+  padding: 5% 0;
+}
+/* 昵称 */
+.nickName {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 1rem;
+}

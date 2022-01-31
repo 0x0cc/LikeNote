@@ -14,7 +14,21 @@ App({
         env: 'cloud1-8gsiazug86a92de4'
       });
     }
-
-    this.globalData = {};
+    // 获取设备信息
+    wx.getSystemInfo({
+      success: (result) => {
+        this.globalData.statusHeight = result.statusBarHeight;
+        this.globalData.screenHeight = result.screenHeight;
+        this.globalData.screenWidth = result.screenWidth;
+      },
+    })
+  },
+  globalData: {
+    // 状态栏高度
+    statusHeight: '',
+    // 屏幕高度
+    screenHeight: '',
+    // 屏幕宽度
+    screenWidth: '',
   }
 });

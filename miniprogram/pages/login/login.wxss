@@ -1,1 +1,12 @@
 /* pages/login/login.wxss */
+@import '../wxss/main.wxss';
+
+/* 登录卡片内描述文字 */
+.card_text {
+  display: block;
+  box-sizing: border-box;
+  width: 95%;
+  margin: 20% 10%;
+  color: #666666;
+  line-height: 2rem;
+}

@@ -1,0 +1,7 @@
+<!--pages/login/login.wxml-->
+<view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">全屏大标题</view>
+<view class="theme_title">大标题</view>
+<view class="second_title">小标题</view>
+<view class="card">卡片</view>
+<view class="full_width_box">全宽盒子</view>
+<button class="theme_button" bindtap="login">登录</button>
