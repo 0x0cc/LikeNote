@@ -1,0 +1,13 @@
+<!--pages/write/write.wxml-->
+<!-- 页面标题 -->
+<view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">写东西</view>
+
+<!-- 返回 -->
+<view class="back" bindtap="navBack">{{back}} 返回</view>
+
+<form bindsubmit="submit">
+  <!-- 输入区 -->
+  <textarea name="ctn" id="ctn" cols="50" rows="10" auto-focus="true" confirm-type="return" placeholder="写点东西" maxlength="600" class="write_area"></textarea>
+  <!-- 提交按钮 -->
+  <button form-type="submit" class="theme_button">提交审核</button>
+</form>

@@ -1,0 +1,26 @@
+/* pages/write/write.wxss */
+@import '../wxss/main.wxss';
+
+/* 返回 */
+.back {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1.15rem;
+  padding: 2.5% 5%;
+  margin: 0 0 5% 0;
+}
+
+/* 输入区 */
+.write_area {
+  display: block;
+  box-sizing: border-box;
+  width: 90%;
+  height: 20rem;
+  margin: 5%;
+  padding: 7.5%;
+  border-radius: 1.5rem;
+  line-height: 1.5rem;
+  background-image: linear-gradient(to right, #f5f5f5, #fafafa);
+  box-shadow: 0 0 10px lightgrey;
+}

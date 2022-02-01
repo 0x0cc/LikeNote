@@ -1,15 +1,38 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/write/write",
     "pages/person/person",
     "pages/login/login",
     "pages/EXAMPLE/EXAMPLE"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "LIKE Note",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#f6f6f6",
+    "color": "black",
+    "selectedColor": "#6177ff",
+    "position": "bottom",
+    "list": [
+      {
+        "iconPath": "icon/explore.png",
+        "selectedIconPath": "icon/explore_blue.png",
+        "pagePath": "pages/index/index",
+        "text": "探索"
+      },
+      {
+        "iconPath": "icon/account_b.png",
+        "selectedIconPath": "icon/account_blue.png",
+        "pagePath": "pages/person/person",
+        "text": "我的"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
