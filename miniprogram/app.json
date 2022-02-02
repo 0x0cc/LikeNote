@@ -4,7 +4,8 @@
     "pages/write/write",
     "pages/person/person",
     "pages/login/login",
-    "pages/EXAMPLE/EXAMPLE"
+    "pages/EXAMPLE/EXAMPLE",
+    "pages/verify/verify"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,9 +1,17 @@
 <!--pages/write/write.wxml-->
 <!-- 页面标题 -->
-<view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">写东西</view>
+<view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">留言墙</view>
 
 <!-- 返回 -->
 <view class="back" bindtap="navBack">{{back}} 返回</view>
+
+<!-- tips -->
+<view class="full_width_box">
+  <view class="tips">
+    <view>*所有留言经过系统+人工审核后才会公开显示喔，严禁发布违反国家法律法规的内容，一旦审核发现立即永久小黑屋</view>
+    <view>*审核时常为0-12小时</view>
+  </view>  
+</view>
 
 <form bindsubmit="submit">
   <!-- 输入区 -->

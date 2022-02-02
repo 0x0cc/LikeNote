@@ -11,6 +11,14 @@
   margin: 0 0 5% 0;
 }
 
+/* tips */
+.tips {
+  display: block;
+  font-size: 0.85rem;
+  color: #666666;
+  line-height: 1.5rem;
+}
+
 /* 输入区 */
 .write_area {
   display: block;

@@ -3,7 +3,7 @@
 <view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">个人中心</view>
 <view class="full_width_box" style="display: flex;">
   <view class="avatarBox" style="height: {{avatarHeight}}px !important;">
-    <image class="avatar" src="{{avatar}}" mode="widthFix"></image>
+    <image class="avatar" src="{{avatar}}" mode="widthFix" bindtap="verify"></image>
   </view>
   <view class="infoBox">
     <view class="nickName">{{nickName}}</view>

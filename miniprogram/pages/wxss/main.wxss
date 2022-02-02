@@ -66,7 +66,7 @@
   margin: 5%;
   padding: 5% 2.5%;
   background-image: linear-gradient(to top left, #f6f6f6, #fafafa);
-  box-shadow: 0 0 10px #d3d3d3;
+  box-shadow: 0 0 5px #d3d3d3;
   border-radius: 1.5rem;
 }
 
@@ -81,7 +81,7 @@
   padding: 5%;
   background-image: linear-gradient(to right, #f6f6f6, #fafafa);
   margin: 5% 0;
-  box-shadow: 0 0 10px lightgrey;
+  box-shadow: 0 0 5px lightgrey;
 }
 
 /* 小标题栏 */
@@ -106,6 +106,19 @@
   padding: 2.5%;
   background-image: linear-gradient(to right, #8595ff, #6177ff);
   color: white;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+/* 主题色按钮2 */
+.theme_button_2 {
+  display: block;
+  box-sizing: border-box;
+  width: 40% !important;
+  margin: 5% 30%;
+  padding: 2.5%;
+  border: 1px #6177ff solid;
+  color: #6177ff;
   font-weight: 400;
   font-size: 1rem;
   border-radius: 0.5rem;

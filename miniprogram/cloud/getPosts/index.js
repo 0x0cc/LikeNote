@@ -7,5 +7,18 @@ cloud.init({
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  return cloud.database().collection('posts').get();
+  var acquire = event.acquire;
+  if(acquire.length == 0) {
+    return cloud.database().collection('posts').get();
+  }
+  else if(acquire == 'pass') {
+    return cloud.database().collection('posts').where({
+      pass: true
+  }).get();
+  }
+  else if(acquire == 'verify') {
+    return cloud.database().collection('posts').where({
+      pass: false
+  }).get();
+  }
 }

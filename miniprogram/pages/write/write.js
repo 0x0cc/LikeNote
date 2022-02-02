@@ -97,7 +97,9 @@ Page({
           openid: openid,
           nickName: nickName,
           avatar: avatar,
-          ctn: index
+          ctn: index,
+          // 待审核
+          pass: false
         },
         success:(res)=> {
           wx.showToast({

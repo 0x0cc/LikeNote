@@ -21,26 +21,6 @@ Page({
 
   login: function(e) {
     var that = this;
-    // 获取openid
-    wx.cloud.callFunction({
-      name: 'getUserId',
-      data: {},
-      success:(res)=> {
-        console.log(res);
-        that.setData({
-          openid: res.result.openid
-        })
-      },
-      fail: (res)=> {
-        console.log(res);
-        wx.showToast({
-          title: '登录失败',
-          icon: 'error',
-          duration: 800
-        })
-        return;
-      }
-    })
     wx.getUserProfile({
       desc: '登录',
       success: (res)=> {
@@ -48,7 +28,7 @@ Page({
         console.log(res);
         var nickName = res.userInfo.nickName;
         var avatar = res.userInfo.avatarUrl;
-        this.setData({
+        that.setData({
           nickName: nickName,
           avatar: avatar,
         })
@@ -57,6 +37,14 @@ Page({
         var avatar = that.data.avatar;
         var nickName = that.data.nickName;
         console.log('openid: '+openid);
+        if(openid.length == 0) {
+          wx.showToast({
+            title: '登录失败',
+            icon: 'error',
+            duration: 800
+          })
+          return;
+        }
         // 检查是否已在数据库存在记录
         db.collection('users').where({
           openid: openid
@@ -82,6 +70,18 @@ Page({
             }
           })
         }
+      }).then(res=>{
+        // 存储登录信息
+        wx.setStorage({
+          key: 'openid',
+          data: that.data.openid,
+          success:res => {
+            // 跳转
+            wx.switchTab({
+              url: '../person/person',
+            })
+          }
+        })
       })
       },
       fail: (res)=> {
@@ -94,26 +94,35 @@ Page({
         return;
       }
     })
-    setTimeout(function(){
-      // 存储登录信息
-      wx.setStorage({
-        key: 'openid',
-        data: that.data.openid
-      })
-    },1000)
-    setTimeout(function(){
-      // 跳转
-      wx.navigateBack({
-        delta: 0,
-      })
-    },1200)
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    // 获取openid
+    wx.cloud.callFunction({
+      name: 'getUserId',
+      data: {},
+      success:(res)=> {
+        console.log(res);
+        that.setData({
+          openid: res.result.openid
+        })
+        
+      },
+      fail: (res)=> {
+        console.log(res);
+        wx.showToast({
+          title: '登录失败',
+          icon: 'error',
+          duration: 800
+        })
+        return;
+      }
+    })
   },
 
   /**

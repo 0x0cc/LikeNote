@@ -15,10 +15,64 @@ Page({
     avatarHeight: null,
     // 添加按钮高度
     fix_button: null,
+    // 添加按钮动画
+    animation: '',
+    // 顶部滑块样式
+    slide_block: 'top_slide_block_left',
     // openid
     openid: '',
+    // 当前页面 0为最新 1为最热
+    current: 0,
+    // 触摸点
+    startX: '',
     // 页面内容
     content: [],
+  },
+
+  /**监听切换最新/最热
+   */
+  // 监听触摸开始
+  slideStart: function(e) {
+    console.log(e);
+    var startX = e.changedTouches[0].pageX;
+    this.setData({
+      startX: startX
+    })
+  },
+  slideEnd: function(e) {
+    console.log(e);
+    var endX = e.changedTouches[0].pageX;
+    var startX = this.data.startX;
+    var distance = endX-startX;
+    console.log(distance)
+    // 负数为向左 正数向右
+    if(distance >= 50) {
+      this.setData({
+        current: 1,
+        slide_block: 'top_slide_block_right'
+      })
+      console.log("切换到最热")
+    }
+    else if(distance <= -50) {
+      this.setData({
+        current: 0,
+        slide_block: 'top_slide_block_left'
+      })
+      console.log("切换到最新")
+    }
+  },
+  // 顶部点击事件
+  newest: function(e) {
+    this.setData({
+      current: 0,
+      slide_block: 'top_slide_block_left'
+    })
+  },
+  hottest: function(e) {
+    this.setData({
+      current: 1,
+      slide_block: 'top_slide_block_right'
+    })
   },
 
   // 检查登陆状态
@@ -57,6 +111,10 @@ Page({
     var that = this;
     wx.cloud.callFunction({
       name: 'getPosts',
+      data: {
+        // 请求审核通过的记录
+        acquire: 'pass'
+      },  
       success:(res)=> {
         console.log(res.result.data);
         if(res.result.length == 0) {
@@ -80,8 +138,28 @@ Page({
 
   // 去发言
   navWrite: function(e) {
-    wx.navigateTo({
-      url: '../write/write',
+    this.buttonAni(90,500);
+    var that = this;
+    setTimeout(function(){
+      // 清除动画
+      that.buttonAni(0,0);
+      wx.navigateTo({
+        url: '../write/write',
+      })
+    },500)
+  },
+
+  // 按钮动画
+  buttonAni: function(deg,drt) {
+    var animation = wx.createAnimation({
+      delay: 0,
+      duration: drt,
+      timingFunction: 'ease'
+    })
+    animation.rotate(deg).step();
+    animation = animation.export();
+    this.setData({
+      animation: animation
     })
   },
 
