@@ -20,6 +20,8 @@ Page({
     avatar: '',
     // 用户昵称
     nickName: '',
+    // 身份认证
+    identity: [],
   },
   // 检查登陆状态
   checkLog: function(e) {
@@ -51,6 +53,42 @@ Page({
       url: '../login/login',
     })
   },
+  // 检查认证
+  checkIdentity: function(e) {
+    var iden = [];
+    // 管理员
+    var openid = this.data.openid;
+    db.collection('administer').where({
+      openid: openid
+    }).get()
+    .then(res=> {
+      console.log(res)
+      if(res.data.length != 0) {
+        // 管理员验证成功
+        iden.push('管理员')
+        this.setData({
+          identity: iden
+        })
+      }
+    })
+    // 其他认证
+    db.collection('users').where({
+      openid: openid
+    }).get()
+    .then(res=> {
+      var iden = res.data[0].identity;
+      if (iden.length != 0) {
+        var identity = this.data.identity;
+        for(var idx in iden) {
+          identity.push(iden[idx]);
+        }
+        this.setData({
+          identity: identity
+        })
+      }
+    })
+
+  },
   // 初始化数据
   getInfo: function(e) {
     var that = this;
@@ -64,6 +102,7 @@ Page({
           nickName: info[0].nickName,
           avatar: info[0].avatar
         })
+        this.checkIdentity();
       },
       fail:(res)=> {
         console.log(res);
@@ -77,8 +116,20 @@ Page({
   },
 
   verify: function(e) {
-    wx.navigateTo({
-      url: '../verify/verify',
+    // 检查管理者权限
+    var openid = this.data.openid;
+    console.log(openid);
+    db.collection('administer').where({
+      openid: openid
+    }).get()
+    .then(res=> {
+      console.log(res)
+      if(res.data.length != 0) {
+        // 管理员验证成功
+        wx.navigateTo({
+          url: '../verify/verify',
+        })
+      }
     })
   },
 

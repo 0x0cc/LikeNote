@@ -7,5 +7,10 @@
   </view>
   <view class="infoBox">
     <view class="nickName">{{nickName}}</view>
+    <view class="identity_box">
+      <block wx:for="{{identity}}" wx:key="item">
+        <view class="identity">{{item}}</view>
+      </block> 
+    </view>
   </view>
 </view>
