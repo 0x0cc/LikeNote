@@ -92,7 +92,7 @@
 }
 .nickName {
   letter-spacing: 1px;  
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 /* 内容展示框 */
 .ctn_box {
@@ -109,4 +109,33 @@
   white-space: pre-wrap;
   font-size: 0.85rem;
   text-indent: 1.5rem;
+}
+
+/* 底部日期/点赞/评论 */
+.ctn_bottom {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding: 0 2.5%;
+  box-sizing: border-box;
+  border-top: 0.5px lightgrey dashed;
+}
+.cmt_box {
+  display: block;
+  box-sizing: border-box;
+  width: fit-content;
+  padding: 2.5% 2.5% 0 2.5%;
+  margin: 0 2.5% -2.5% 2.5%;
+  line-height: 0.75rem;
+}
+.cmt_icon {
+  width: 80%;
+  margin: 0 10%;
+  padding: 0;
+}
+.cmt_desc {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #555555;
 }

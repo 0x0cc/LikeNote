@@ -32,10 +32,7 @@ Page({
           nickName: nickName,
           avatar: avatar,
         })
-        
         var openid = that.data.openid;
-        var avatar = that.data.avatar;
-        var nickName = that.data.nickName;
         console.log('openid: '+openid);
         if(openid.length == 0) {
           wx.showToast({
@@ -94,7 +91,6 @@ Page({
         return;
       }
     })
-    
   },
 
   /**

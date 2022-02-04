@@ -1,0 +1,71 @@
+<!--pages/detail/detail.wxml-->
+<!-- 顶部标题 -->
+<view class="theme_full_title" style="padding-top: {{statusHeight+8}}px;">留言详情</view>
+<!-- 返回 -->
+<view class="back" bindtap="navBack">{{back}} 返回</view>
+<!-- 帖子详情 -->
+<view class="detail_box">
+  <!-- 用户信息 -->
+  <view data-id="{{content._id}}">
+    <view class="info_flexbox">
+      <view class="avatar_box" style="height: {{avatarHeight}}px;">
+        <image src="{{content.avatar}}" mode="aspectFill" class="avatar"></image>
+      </view>
+      <view class="info_box">
+        <view class="nickName">{{content.nickName}}</view>
+      </view>
+    </view>
+    <!-- 正文 -->
+    <view class="ctn_box">
+      <block wx:for="{{content.ctn}}" wx:for-item="ctn" wx:key="ctn">
+        <view class="ctn_prg">{{ctn}}</view>
+      </block>
+    </view>
+
+    <!-- 底部评论/点赞 -->
+    <view class="detail_bottom">
+      <view class="bottom_box">
+        <image src="{{pick == true ? '/icon/picked.png' : '/icon/pick.png'}}" mode="widthFix" class="bottom_icon"></image>
+        <view class="bottom_desc">点赞</view>
+      </view>
+      <!-- <view class="bottom_box">
+        <image src="/icon/message_b.png" mode="widthFix" class="bottom_icon"></image>
+        <view class="bottom_desc">评论</view>
+      </view> -->
+    </view>
+    <!-- 评论输入栏 -->
+    <form bindsubmit="cmt_submit" data-id="{{content._id}}">
+      <view class="cmt_form_box">
+          <textarea name="cmt" id="cmt" placeholder="评论" class="cmt_input_box" bindinput="listenInput" value="{{input}}"></textarea>
+          <button form-type="submit" class="cmt_submit">评论</button>
+      </view>
+    </form>
+  </view>
+</view>
+
+<!-- 评论区 -->
+<view class="full_width_box" style="padding: 5% 2.5%;">
+ <view class="second_title" style="margin: 2.5% 0;">评论区</view> 
+ <!-- 评论区内容 -->
+ <block wx:for="{{comment}}" wx:key="item">
+   <view class="cmt_box">
+    <!-- 用户信息 -->
+    <view class="info_flexbox">
+      <view class="avatar_box">
+        <image src="{{item.avatar}}" mode="aspectFill" style="height: {{avatarHeight}}px;" class="avatar"></image>
+      </view>
+      <view class="info_box">
+        <view class="nickName">{{item.nickName}}</view>
+      </view>
+    </view>
+    <!-- 评论内容 -->
+    <view class="ctn_box">   
+      <block wx:for="{{item.ctn}}" wx:for-item="ctn" wx:key="ctn">
+        <view class="ctn_prg">{{ctn}}</view>
+      </block>
+    </view>
+   </view>  
+ </block>
+</view>
+
+

@@ -1,0 +1,85 @@
+/* pages/detail/detail.wxss */
+@import '../wxss/main.wxss';
+@import '../index/index.wxss';
+
+.back {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1.15rem;
+  padding: 2.5% 5%;
+  margin: 0 0 5% 0;
+}
+
+.detail_box {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5% 5% 0 5%;
+}
+
+/* 评论点赞区 */
+.detail_bottom {
+  display: flex;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+  padding: 0 2.5%;
+  width: 100%;
+  line-height: 0.75rem;
+}
+.bottom_box {
+  width: 20%;
+  display: block;
+}
+.bottom_icon {
+  width: 30%;
+  margin: 0 35%;
+  opacity: 90%;
+}
+.bottom_desc {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+
+/* 评论区各个盒子 */
+.cmt_box {
+  width: 95%;
+  padding: 5% 0;
+  box-sizing: border-box;
+  border-bottom: 1px lightgrey solid;
+}
+
+.cmt_form_box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  width: 100% !important;
+  margin: 5% 0 0 0;
+}
+
+.cmt_input_box {
+  display: block;
+  box-sizing: border-box;
+  width: 80% !important;
+  height: 2rem;
+  padding: 2.5% 5%;
+  font-size: 0.85rem;
+  margin: 0 !important;
+  background-image: linear-gradient(to right, #f6f6f6, #fafafa);
+  box-shadow: 0 0 5px lightgrey;
+}
+.cmt_submit {
+  display: block;
+  box-sizing: border-box;
+  width: 15% !important;
+  margin: 0 0 0 5%;
+  padding: 2% 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  background-image: white;
+  color: #6177ff;
+  border: 1px #6177ff solid;
+  border-radius: 0;
+}

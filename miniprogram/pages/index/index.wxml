@@ -17,19 +17,36 @@
     <block wx:for="{{content}}" wx:key="item">
       <view class="full_width_box">
         <!-- 用户信息 -->
-        <view class="info_flexbox">
-          <view class="avatar_box" style="height: {{avatarHeight}}px;">
-            <image src="{{item.avatar}}" mode="aspectFill" class="avatar"></image>
+        <view data-id="{{item._id}}" bindtap="showDetail">
+          <view class="info_flexbox">
+            <view class="avatar_box" style="height: {{avatarHeight}}px;">
+              <image src="{{item.avatar}}" mode="aspectFill" class="avatar"></image>
+            </view>
+            <view class="info_box">
+              <view class="nickName">{{item.nickName}}</view>
+            </view>
           </view>
-          <view class="info_box">
-            <view class="nickName">{{item.nickName}}</view>
+          <!-- 正文 -->
+          <view class="ctn_box">
+            <block wx:for="{{item.ctn}}" wx:for-item="ctn" wx:key="ctn">
+              <view class="ctn_prg">{{ctn}}</view>
+            </block>
           </view>
         </view>
-        <!-- 正文 -->
-        <view class="ctn_box">
-          <block wx:for="{{item.ctn}}" wx:for-item="ctn" wx:key="ctn">
-            <view class="ctn_prg">{{ctn}}</view>
-          </block>
+        
+        <!-- 底部日期/评论/点赞 -->
+        <view class="ctn_bottom">
+
+          <view class="cmt_box">
+            <image src="{{pick == true ? '/icon/picked.png' : '/icon/pick.png'}}" mode="widthFix" class="cmt_icon"></image>
+            <view class="cmt_desc">点赞</view>
+          </view>
+
+          <view class="cmt_box">
+            <image src="/icon/message_b.png" mode="widthFix" class="cmt_icon"></image>
+            <view class="cmt_desc">评论</view>
+          </view>
+          
         </view>
       </view>
     </block>
