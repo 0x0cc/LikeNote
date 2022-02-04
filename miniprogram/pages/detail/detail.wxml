@@ -24,10 +24,10 @@
 
     <!-- 底部评论/点赞 -->
     <view class="detail_bottom">
-      <view class="bottom_box">
+      <!-- <view class="bottom_box">
         <image src="{{pick == true ? '/icon/picked.png' : '/icon/pick.png'}}" mode="widthFix" class="bottom_icon"></image>
         <view class="bottom_desc">点赞</view>
-      </view>
+      </view> -->
       <!-- <view class="bottom_box">
         <image src="/icon/message_b.png" mode="widthFix" class="bottom_icon"></image>
         <view class="bottom_desc">评论</view>

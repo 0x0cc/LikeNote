@@ -116,26 +116,28 @@
   text-indent: 1.5rem;
 }
 
-/* 底部日期/点赞/评论 */
+/* 底部点赞/评论 */
 .ctn_bottom {
   display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
+  width: 40%;
   padding: 0 2.5%;
+  margin: 0 0 0 60%;
   box-sizing: border-box;
   border-top: 0.5px lightgrey dashed;
 }
 .cmt_box {
   display: block;
   box-sizing: border-box;
-  width: fit-content;
+  width: 45%;
   padding: 2.5% 2.5% 0 2.5%;
   margin: 0 2.5% -2.5% 2.5%;
   line-height: 0.75rem;
 }
 .cmt_icon {
-  width: 80%;
-  margin: 0 10%;
+  display: block;
+  opacity: 90%;
+  width: 50%;
+  margin: 0 25%;
   padding: 0;
 }
 .cmt_desc {

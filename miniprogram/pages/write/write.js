@@ -118,7 +118,11 @@ Page({
           ctn: index,
           time: time,
           // 待审核
-          pass: false
+          pass: false,
+          // 点赞数
+          like_count: 0,
+          like: [],
+          cmt_count: 0,
         },
         success:(res)=> {
           wx.showToast({

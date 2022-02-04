@@ -13,7 +13,8 @@ exports.main = async (event, context) => {
   const _ = db.command;
   db.collection('posts').doc(id).update({
     data: {
-      comment: _.push([cmt])
+      comment: _.push([cmt]),
+      cmt_count: _.inc(1)
     }
   }).then(res=>{
     return res;

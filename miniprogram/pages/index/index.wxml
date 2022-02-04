@@ -37,17 +37,14 @@
         
         <!-- 底部日期/评论/点赞 -->
         <view class="ctn_bottom">
-
-          <view class="cmt_box">
-            <image src="{{pick == true ? '/icon/picked.png' : '/icon/pick.png'}}" mode="widthFix" class="cmt_icon"></image>
-            <view class="cmt_desc">点赞</view>
-          </view>
-
-          <view class="cmt_box">
+          <view class="cmt_box" data-id="{{item._id}}" bindtap="showDetail">
             <image src="/icon/message_b.png" mode="widthFix" class="cmt_icon"></image>
-            <view class="cmt_desc">评论</view>
+            <view class="cmt_desc">{{item.cmt_count}}</view>
           </view>
-          
+          <view class="cmt_box" data-id="{{item._id}}" bindtap="dealLike">
+            <image src="{{like[item._id] == true ? '/icon/picked.png' : '/icon/pick.png'}}" mode="widthFix" class="cmt_icon"></image>
+            <view class="cmt_desc">{{item.like_count}}</view>
+          </view>
         </view>
       </view>
     </block>

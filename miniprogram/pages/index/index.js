@@ -27,6 +27,7 @@ Page({
     startX: '',
     // 页面内容
     content: [],
+    like: {},
   },
 
   /**监听切换最新/最热
@@ -76,7 +77,7 @@ Page({
   },
 
   // 检查登陆状态
-  checkLog: function(e) {
+  checkLog: function() {
     var that = this;
     wx.getStorage({
       key: 'openid',
@@ -85,16 +86,17 @@ Page({
         if(res.data.length == 0) {
           console.log("empty data");
           that.gotoLog();
-          return;
+          return -1;
         }
         that.setData({
-          openid: res.data
+          openid: res.data,
         })
+        return 0;
       },
       fail:(res) =>{
         console.log(res)
         that.gotoLog();
-        return;
+        return -1;
       }
     })
   },
@@ -136,7 +138,6 @@ Page({
     })
   },
 
-
   // 去发言
   navWrite: function(e) {
     this.buttonAni(90,500);
@@ -172,10 +173,56 @@ Page({
     })
   },
 
+  // 是否已点赞
+  checkLike: function(e) {
+    var openid = this.data.openid;
+    console.log(openid)
+    var like = {};
+    db.collection('posts').get()
+    .then(res=> {
+      console.log(res);
+      for(var idx of res.data) {
+        for(var piv of idx['like']) {
+          if(piv == openid) {
+            like[idx['_id']] = true;
+          }
+          else {
+            like[idx._id] = false;
+          }
+        }
+      }
+      this.setData({
+        like: like
+      })
+    })
+  },
+  // 点赞/取消
+  dealLike: function(e) {
+    var id = e.currentTarget.dataset.id;
+    var openid = this.data.openid;
+    wx.cloud.callFunction({
+      name: 'addLike',
+      data: {
+        id: id,
+        openid: openid,
+      },
+    })
+    .then(res=> {
+      console.log(res);
+      var like = this.data.like;
+      like[id] = !like[id];
+      this.setData({
+        like: like
+      })
+      this.onLoad();
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     var avatarHeight = this.data.screenWidth;
     var fix_button = avatarHeight*0.15;
     avatarHeight = avatarHeight*0.9*0.15;
@@ -183,14 +230,15 @@ Page({
       avatarHeight: avatarHeight,
       fix_button: fix_button
     })
-    this.getPosts();
+    this.checkLog();
+    this.getPosts();  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.checkLike();
   },
 
   /**
