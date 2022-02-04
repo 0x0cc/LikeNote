@@ -22,6 +22,8 @@ Page({
     back: '<',
     // 当前时间
     time: '',
+    // 用户身份
+    identity: '',
   },
   // 检查登陆状态
   checkLog: function(e) {
@@ -110,11 +112,13 @@ Page({
       var avatar = this.data.avatar;
       var openid = this.data.openid;
       var time = this.data.time;
+      var identity = this.data.identity;
       db.collection('posts').add({
         data: {
           openid: openid,
           nickName: nickName,
           avatar: avatar,
+          identity: identity,
           ctn: index,
           time: time,
           // 待审核
@@ -160,6 +164,7 @@ Page({
         that.setData({
           nickName: res.data[0].nickName,
           avatar: res.data[0].avatar,
+          identity: res.data[0].identity,
         })
       },
       fail:(res)=> {

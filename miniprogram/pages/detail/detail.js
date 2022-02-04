@@ -19,6 +19,7 @@ Page({
     // 评论人信息
     nickName: '',
     avatar: '',
+    identity: [],
     // 帖子内容
     content: [],
     // 评论内容
@@ -30,6 +31,7 @@ Page({
     id: '',
     // 监听输入
     input: '',
+    time: '',
   },
 
   // 返回
@@ -56,13 +58,14 @@ Page({
           openid: openid,
         })
         db.collection('users').where({
-          _openid: openid
+          openid: openid
         }).get()
         .then(res=> {
           console.log(res)
           that.setData({
             nickName: res.data[0].nickName,
-            avatar: res.data[0].avatar
+            avatar: res.data[0].avatar,
+            identity: res.data[0].identity,
           })
         })
         .catch(err=> {
@@ -84,6 +87,19 @@ Page({
     })
   },
 
+  // 获取现在时间
+  getTime: function(e) {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+    var time = '';
+    time += year + '-' + month + '-' + day;
+    this.setData({
+      time: time
+    })
+  },
+
   // 评论提交
   cmt_submit: function(e) {
     console.log(e);
@@ -98,6 +114,7 @@ Page({
       return;
     }
     else {
+      this.getTime();
       var index = [];
       var piv = 0;
       for(var idx=0; idx<ctn.length; idx++) {
@@ -119,8 +136,10 @@ Page({
       var openid = this.data.openid;
       var nickName = this.data.nickName;
       var avatar = this.data.avatar;
+      var identity = this.data.identity;
+      var time = this.data.time;
       ctn = index;
-      var comment = {'nickName':nickName,'openid':openid,'avatar':avatar,'ctn':ctn };
+      var comment = {'nickName':nickName,'openid':openid,'avatar':avatar,'ctn':ctn, 'identity':identity, 'time':time };
       wx.cloud.callFunction({
         name: 'addComment',
         data: {

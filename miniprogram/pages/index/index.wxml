@@ -24,6 +24,11 @@
             </view>
             <view class="info_box">
               <view class="nickName">{{item.nickName}}</view>
+              <view class="identity_box">
+                <block wx:for="{{item.identity}}" wx:for-item="iden" wx:key="iden">
+                  <view class="identity">{{iden}}</view>
+                </block> 
+              </view>
               <view class="time">{{item.time}}</view>
             </view>
           </view>
@@ -36,8 +41,8 @@
         </view>
         
         <!-- 底部日期/评论/点赞 -->
-        <view class="ctn_bottom">
-          <view class="cmt_box" data-id="{{item._id}}" bindtap="showDetail">
+        <view class="ctn_bottom" data-id="{{item._id}}" bindtap="showDetail">
+          <view class="cmt_box">
             <image src="/icon/message_b.png" mode="widthFix" class="cmt_icon"></image>
             <view class="cmt_desc">{{item.cmt_count}}</view>
           </view>

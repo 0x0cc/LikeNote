@@ -13,6 +13,12 @@
       </view>
       <view class="info_box">
         <view class="nickName">{{content.nickName}}</view>
+        <view class="identity_box">
+          <block wx:for="{{content.identity}}" wx:key="item">
+            <view class="identity">{{item}}</view>
+          </block> 
+        </view>
+        <view class="time">{{content.time}}</view>
       </view>
     </view>
     <!-- 正文 -->
@@ -56,6 +62,12 @@
       </view>
       <view class="info_box">
         <view class="nickName">{{item.nickName}}</view>
+        <view class="identity_box">
+          <block wx:for="{{item.identity}}" wx:for-item="iden" wx:key="iden">
+            <view class="identity">{{iden}}</view>
+          </block> 
+        </view>
+        <view class="time">{{item.time}}</view>
       </view>
     </view>
     <!-- 评论内容 -->
