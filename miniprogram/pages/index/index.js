@@ -46,14 +46,14 @@ Page({
     var distance = endX-startX;
     console.log(distance)
     // 负数为向左 正数向右
-    if(distance >= 75) {
+    if(distance >= 100) {
       this.setData({
         current: 1,
         slide_block: 'top_slide_block_right'
       })
       console.log("切换到最热")
     }
-    else if(distance <= -75) {
+    else if(distance <= -100) {
       this.setData({
         current: 0,
         slide_block: 'top_slide_block_left'
