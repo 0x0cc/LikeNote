@@ -113,11 +113,11 @@ Page({
       name: 'getPosts',
       data: {
         // 请求审核通过的记录
-        acquire: 'pass'
+        acquire: true
       },  
       success:(res)=> {
         console.log(res.result.data);
-        if(res.result.length == 0) {
+        if(res.result.data.length == 0) {
           wx.showToast({
             title: '没有更多了',
             icon: 'error',
@@ -135,6 +135,7 @@ Page({
       }
     })
   },
+
 
   // 去发言
   navWrite: function(e) {

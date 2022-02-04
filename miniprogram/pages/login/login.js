@@ -74,7 +74,7 @@ Page({
           data: that.data.openid,
           success:res => {
             // 跳转
-            wx.switchTab({
+            wx.reLaunch({
               url: '../person/person',
             })
           }

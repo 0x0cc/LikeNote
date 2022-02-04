@@ -11,7 +11,8 @@ App({
         //   如不填则使用默认环境（第一个创建的环境）
         // env: 'my-env-id',
         traceUser: true,
-        env: 'cloud1-8gsiazug86a92de4'
+        // env: 'cloud1-8gsiazug86a92de4'
+        env: 'scnu-user-8gq0p5390acf2a6c'
       });
     }
     // 获取设备信息

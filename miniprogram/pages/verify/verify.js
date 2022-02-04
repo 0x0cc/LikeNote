@@ -75,7 +75,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getPosts',
       data: {
-        acquire: 'verify'
+        acquire: false
       }
     }).then(res=>{
       var content = res.result.data;

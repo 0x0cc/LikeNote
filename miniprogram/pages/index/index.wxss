@@ -94,6 +94,11 @@
   letter-spacing: 1px;  
   font-size: 1rem;
 }
+.time {
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  color: #6177ff;
+}
 /* 内容展示框 */
 .ctn_box {
   display: block;

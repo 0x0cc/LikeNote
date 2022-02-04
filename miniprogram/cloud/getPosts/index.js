@@ -2,7 +2,7 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init({
-  env: 'cloud1-8gsiazug86a92de4'
+  env: 'scnu-user-8gq0p5390acf2a6c'
 })
 
 // 云函数入口函数
@@ -11,14 +11,9 @@ exports.main = async (event, context) => {
   if(acquire.length == 0) {
     return cloud.database().collection('posts').get();
   }
-  else if(acquire == 'pass') {
+  else {
     return cloud.database().collection('posts').where({
-      pass: true
-  }).get();
-  }
-  else if(acquire == 'verify') {
-    return cloud.database().collection('posts').where({
-      pass: false
+      pass: acquire
   }).get();
   }
 }

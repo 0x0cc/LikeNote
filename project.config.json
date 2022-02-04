@@ -29,7 +29,7 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
@@ -39,7 +39,7 @@
     "showES6CompileOption": false,
     "useCompilerPlugins": false
   },
-  "appid": "wxd05e4b9b2b2dbfc4",
+  "appid": "wxb6194c55d49b874a",
   "projectname": "LIKE%E7%BA%B8%E6%9D%A1",
   "libVersion": "2.16.0",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",

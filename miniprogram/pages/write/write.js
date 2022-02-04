@@ -20,6 +20,8 @@ Page({
     avatar: '',
     // 返回
     back: '<',
+    // 当前时间
+    time: '',
   },
   // 检查登陆状态
   checkLog: function(e) {
@@ -47,8 +49,21 @@ Page({
   },
   // 跳转登录
   gotoLog: function(e) {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../login/login',
+    })
+  },
+
+  // 获取现在时间
+  getTime: function(e) {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+    var time = '';
+    time += year + '-' + month + '-' + day;
+    this.setData({
+      time: time
     })
   },
 
@@ -70,6 +85,8 @@ Page({
       })
     }
     else {
+      // 首先获取当前日期
+      this.getTime();
       var index = [];
       var piv = 0;
       for(var idx=0; idx<ctn.length; idx++) {
@@ -92,12 +109,14 @@ Page({
       var nickName = this.data.nickName;
       var avatar = this.data.avatar;
       var openid = this.data.openid;
+      var time = this.data.time;
       db.collection('posts').add({
         data: {
           openid: openid,
           nickName: nickName,
           avatar: avatar,
           ctn: index,
+          time: time,
           // 待审核
           pass: false
         },

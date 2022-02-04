@@ -24,6 +24,7 @@
             </view>
             <view class="info_box">
               <view class="nickName">{{item.nickName}}</view>
+              <view class="time">{{item.time}}</view>
             </view>
           </view>
           <!-- 正文 -->
