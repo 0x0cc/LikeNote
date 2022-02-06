@@ -11,9 +11,17 @@ exports.main = async (event, context) => {
   if(acquire.length == 0) {
     return cloud.database().collection('posts').get();
   }
-  else {
+  else if(acquire == true || acquire == false) {
     return cloud.database().collection('posts').where({
       pass: acquire
   }).get();
+  }
+  else if(acquire == 'hottest') {
+    return cloud.database().collection('posts')
+    .orderBy('like_count','asc')
+    .orderBy('cmt_count','asc')
+    .where({
+      pass: true
+    }).get();
   }
 }

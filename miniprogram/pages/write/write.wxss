@@ -19,12 +19,43 @@
   line-height: 1.5rem;
 }
 
+/* switch */
+.switch_flexbox {
+  display: flex;
+  width: 100%;
+}
+.switch_box {
+  width: 2.75rem;
+  height: 1.52rem;
+  display: block;
+  position: relative;
+  margin: 2.5% 5%;
+  border-radius: 2rem;
+  box-shadow: 0 0 5px #d3d3d3;
+  overflow: hidden;
+  transition: all 0.25s;
+}
+.switch_ball {
+  margin: auto 0;
+  display: block;
+  position: relative;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  background: #f5f5f5;
+  box-shadow: 0 0 5px #d3d3d3;
+  transition: all 0.25s;
+}
+.switch_desc {
+  font-size: 0.75rem;
+  margin: auto 0;
+}
 /* 输入区 */
 .write_area {
   display: block;
   box-sizing: border-box;
   width: 90%;
-  height: 20rem;
+  height: 15rem;
   margin: 5%;
   padding: 7.5%;
   border-radius: 1.5rem;

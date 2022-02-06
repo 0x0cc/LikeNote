@@ -14,6 +14,13 @@
 </view>
 
 <form bindsubmit="submit">
+  <view class="switch_flexbox">
+    <view class="switch_box" style="background: {{switchBackground}};" bindtap="switchTap">
+      <view class="switch_ball" style="margin-left: {{switchBall}};"></view>
+    </view>
+    <view class="switch_desc">匿名：{{unreal ? '已开启' : '未开启'}}</view>
+  </view>
+  
   <!-- 输入区 -->
   <textarea name="ctn" id="ctn" cols="50" rows="10" auto-focus="true" confirm-type="return" placeholder="写点东西" maxlength="600" class="write_area"></textarea>
   <!-- 提交按钮 -->

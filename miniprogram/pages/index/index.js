@@ -47,19 +47,11 @@ Page({
     var distance = endX-startX;
     console.log(distance)
     // 负数为向左 正数向右
-    if(distance >= 80) {
-      this.setData({
-        current: 1,
-        slide_block: 'top_slide_block_right'
-      })
-      console.log("切换到最热")
+    if(distance <= -80) {
+      this.hottest();
     }
-    else if(distance <= -80) {
-      this.setData({
-        current: 0,
-        slide_block: 'top_slide_block_left'
-      })
-      console.log("切换到最新")
+    else if(distance >= 80) {
+      this.newest();
     }
   },
   // 顶部点击事件
@@ -68,12 +60,14 @@ Page({
       current: 0,
       slide_block: 'top_slide_block_left'
     })
+    this.getPosts(true);
   },
   hottest: function(e) {
     this.setData({
       current: 1,
       slide_block: 'top_slide_block_right'
     })
+    this.getPosts('hottest');
   },
 
   // 检查登陆状态
@@ -108,14 +102,14 @@ Page({
   },
 
   // 获取帖子
-  getPosts: function(e) {
+  getPosts: function(order) {
     var content = [];
     var that = this;
     wx.cloud.callFunction({
       name: 'getPosts',
       data: {
         // 请求审核通过的记录
-        acquire: true
+        acquire: order
       },  
       success:(res)=> {
         console.log(res.result.data);
@@ -231,7 +225,11 @@ Page({
       fix_button: fix_button
     })
     this.checkLog();
-    this.getPosts();  
+    var current = this.data.current;
+    if(current == 0) {
+      this.getPosts(true);
+    }
+    else { this.getPosts('hottest'); }   
   },
 
   /**

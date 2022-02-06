@@ -24,6 +24,10 @@ Page({
     time: '',
     // 用户身份
     identity: '',
+    // switch
+    switchBackground: '#f8f8f8',
+    switchBall: '0rem',
+    unreal: false,
   },
   // 检查登陆状态
   checkLog: function(e) {
@@ -54,6 +58,25 @@ Page({
     wx.redirectTo({
       url: '../login/login',
     })
+  },
+
+  // switch点击事件
+  switchTap: function(e) {
+    var unreal = this.data.unreal;
+    if(unreal) {
+      this.setData({
+        unreal: false,
+        switchBackground: '#f8f8f8',
+        switchBall: '0rem'
+      })
+    }
+    else {
+      this.setData({
+        unreal: true,
+        switchBall: '1.25rem',
+        switchBackground: '#8595ff'
+      })
+    }
   },
 
   // 获取现在时间
@@ -107,9 +130,18 @@ Page({
         }
       }
       console.log(index);
+      var unreal = this.data.unreal;
       // 上传数据库
-      var nickName = this.data.nickName;
-      var avatar = this.data.avatar;
+      var nickName,avatar;
+      if(unreal) {
+        // 开启匿名
+        avatar = '/icon/account_blue.png';
+        nickName = '匿名用户';
+      }
+      else {
+        avatar = this.data.avatar;
+        nickName = this.data.nickName;
+      }
       var openid = this.data.openid;
       var time = this.data.time;
       var identity = this.data.identity;
@@ -127,6 +159,8 @@ Page({
           like_count: 0,
           like: [],
           cmt_count: 0,
+          // 是否匿名
+          unreal: unreal
         },
         success:(res)=> {
           wx.showToast({

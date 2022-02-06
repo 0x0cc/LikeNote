@@ -25,6 +25,49 @@
             <view class="info_box">
               <view class="nickName">{{item.nickName}}</view>
               <view class="identity_box">
+                <block wx:if="{{!item.unreal}}" wx:for="{{item.identity}}" wx:for-item="iden" wx:key="iden">
+                  <view class="identity">{{iden}}</view>
+                </block> 
+              </view>
+              <view class="time">{{item.time}}</view>
+            </view>
+          </view>
+          <!-- 正文 -->
+          <view class="ctn_box" data-id="{{item._id}}" bindtap="showDetail">
+            <block wx:for="{{item.ctn}}" wx:for-item="ctn" wx:key="ctn">
+              <view class="ctn_prg">{{ctn}}</view>
+            </block>
+          </view>
+        </view>
+        
+        <!-- 底部日期/评论/点赞 -->
+        <view class="ctn_bottom">
+          <view class="cmt_box" >
+            <image src="/icon/message_b.png" mode="widthFix" class="cmt_icon" data-id="{{item._id}}" bindtap="showDetail"></image>
+            <view class="cmt_desc">{{item.cmt_count}}</view>
+          </view>
+          <view class="cmt_box" data-id="{{item._id}}" bindtap="dealLike">
+            <image src="{{like[item._id] == true ? '/icon/picked.png' : '/icon/pick.png'}}" mode="widthFix" class="cmt_icon"></image>
+            <view class="cmt_desc">{{item.like_count}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <!-- 最热 -->
+  <block wx:if="{{current == 1}}">
+    <block wx:for="{{content}}" wx:key="item">
+      <view class="full_width_box">
+        <!-- 用户信息 -->
+        <view data-id="{{item._id}}" bindtap="showDetail">
+          <view class="info_flexbox">
+            <view class="avatar_box" style="height: {{avatarHeight}}px;">
+              <image src="{{item.avatar}}" mode="aspectFill" class="avatar"></image>
+            </view>
+            <view class="info_box">
+              <view class="nickName">{{item.nickName}}</view>
+              <view class="identity_box">
                 <block wx:for="{{item.identity}}" wx:for-item="iden" wx:key="iden">
                   <view class="identity">{{iden}}</view>
                 </block> 
@@ -33,7 +76,7 @@
             </view>
           </view>
           <!-- 正文 -->
-          <view class="ctn_box">
+          <view class="ctn_box" data-id="{{item._id}}" bindtap="showDetail">
             <block wx:for="{{item.ctn}}" wx:for-item="ctn" wx:key="ctn">
               <view class="ctn_prg">{{ctn}}</view>
             </block>
@@ -41,9 +84,9 @@
         </view>
         
         <!-- 底部日期/评论/点赞 -->
-        <view class="ctn_bottom" data-id="{{item._id}}" bindtap="showDetail">
+        <view class="ctn_bottom">
           <view class="cmt_box">
-            <image src="/icon/message_b.png" mode="widthFix" class="cmt_icon"></image>
+            <image src="/icon/message_b.png" mode="widthFix" class="cmt_icon" data-id="{{item._id}}" bindtap="showDetail"></image>
             <view class="cmt_desc">{{item.cmt_count}}</view>
           </view>
           <view class="cmt_box" data-id="{{item._id}}" bindtap="dealLike">

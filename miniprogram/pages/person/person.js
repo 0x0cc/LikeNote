@@ -55,37 +55,34 @@ Page({
   },
   // 检查认证
   checkIdentity: function(e) {
-    var iden = [];
-    // 管理员
+    // // 管理员
     var openid = this.data.openid;
-    db.collection('administer').where({
-      openid: openid
-    }).get()
-    .then(res=> {
-      console.log(res)
-      if(res.data.length != 0) {
-        // 管理员验证成功
-        iden.push('管理员')
-        this.setData({
-          identity: iden
-        })
-      }
-    })
+    // db.collection('administer').where({
+    //   openid: openid
+    // }).get()
+    // .then(res=> {
+    //   console.log(res)
+    //   if(res.data.length != 0) {
+    //     // 管理员验证成功
+    //     iden.push('管理员')
+    //     this.setData({
+    //       identity: iden
+    //     })
+    //   }
+    // })
     // 其他认证
     db.collection('users').where({
       openid: openid
     }).get()
     .then(res=> {
       var iden = res.data[0].identity;
-      if (iden.length != 0) {
-        var identity = this.data.identity;
-        for(var idx in iden) {
-          identity.push(iden[idx]);
-        }
-        this.setData({
-          identity: identity
-        })
+      var identity = [];
+      for(var idx of iden) {
+        identity.push(idx);
       }
+      this.setData({
+        identity: identity
+      })
     })
 
   },
