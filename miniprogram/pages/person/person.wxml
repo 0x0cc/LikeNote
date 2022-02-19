@@ -14,3 +14,11 @@
     </view>
   </view>
 </view>
+
+<!-- 小组件 -->
+<!-- <view class="card" style="display: flex;">
+  <view class="widgets_box" >
+    <image src="/icon/message_b.png" mode="widthFix" class="widgets_icon"></image>
+    <view class="widgets_desc">发言</view>
+  </view>
+</view> -->

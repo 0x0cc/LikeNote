@@ -48,3 +48,20 @@
   background-image: linear-gradient(to right, #8595ff, #6177ff);
   color: white;
 }
+/* 小组件 */
+.widgets_box {
+  display: block;
+  box-sizing: border-box;
+  width: 20%;
+  margin: 2.5%;
+}
+.widgets_icon {
+  display: block;
+  width: 50%;
+  margin: 0 25%;
+}
+.widgets_desc {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+}

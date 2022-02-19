@@ -38,6 +38,11 @@
         <image src="/icon/message_b.png" mode="widthFix" class="bottom_icon"></image>
         <view class="bottom_desc">评论</view>
       </view> -->
+      <!-- 删除 -->
+      <block wx:if="{{openid == content.openid}}">
+        <view class="delete" bindtap="deleteTap">删除</view>
+      </block>
+      
     </view>
     <!-- 评论输入栏 -->
     <form bindsubmit="cmt_submit" data-id="{{content._id}}">

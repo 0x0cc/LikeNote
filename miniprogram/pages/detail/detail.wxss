@@ -83,3 +83,14 @@
   border: 1px #6177ff solid;
   border-radius: 0;
 }
+/* 删除按钮 */
+.delete {
+  display: block;
+  margin: 2.5% 0;
+  width: 100%;
+  text-align: left;
+  color: #6177ff;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  text-decoration-color: #6177ff;
+}

@@ -87,6 +87,34 @@ Page({
     })
   },
 
+  // 删除帖子
+  deleteTap: function(e) {
+    var openid = this.data.openid;
+    var id = this.data.id;
+    db.collection('posts').doc(id).remove()
+    .then(res=>{
+      console.log(res);
+      wx.showToast({
+        title: '删除成功！',
+        icon: 'success',
+        duration: 800
+      })
+      setTimeout(function(){
+        wx.reLaunch({
+          url: '../index/index',
+        })
+      },800)
+    })
+    .catch(err=>{
+      console.log(err);
+      wx.showToast({
+        title: '删除失败',
+        icon: 'error',
+        duration: 800
+      })
+    })
+  },
+
   // 获取现在时间
   getTime: function(e) {
     var date = new Date();
